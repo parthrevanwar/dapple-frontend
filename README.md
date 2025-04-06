@@ -69,46 +69,6 @@
    flutter run
    ```
 
-## Project Structure
-
-```
-.
-├── assets/              # Static assets (images, fonts, etc.)
-│   ├── fonts/           # Custom fonts
-│   ├── images/          # Image assets
-│   └── lottie/          # Lottie animations
-├── lib/                 # Application code
-│   ├── core/            # Core functionality
-│   │   ├── constants/   # App constants
-│   │   ├── errors/      # Error handling
-│   │   ├── network/     # Network-related code
-│   │   ├── theme/       # App theming
-│   │   └── utils/       # Utility functions
-│   ├── data/            # Data layer
-│   │   ├── datasources/ # Remote and local data sources
-│   │   ├── models/      # Data models
-│   │   └── repositories/# Repository implementations
-│   ├── domain/          # Domain layer
-│   │   ├── entities/    # Business entities
-│   │   ├── repositories/# Repository interfaces
-│   │   └── usecases/    # Business logic use cases
-│   ├── presentation/    # Presentation layer
-│   │   ├── bloc/        # State management blocs
-│   │   ├── pages/       # App screens
-│   │   ├── widgets/     # Reusable UI components
-│   │   └── router/      # App navigation
-│   ├── di/              # Dependency injection
-│   └── main.dart        # Application entry point
-├── test/                # Test files
-│   ├── unit/            # Unit tests
-│   ├── widget/          # Widget tests
-│   └── integration/     # Integration tests
-├── .env.example         # Example environment variables
-├── pubspec.yaml         # Flutter dependencies
-├── README.md            # Project documentation
-└── .gitignore           # Git ignore file
-```
-
 ## Key UI Features
 
 ### Onboarding Assessment
@@ -179,12 +139,8 @@
 
 ## Backend Integration
 
-This frontend connects to the [Dapple Backend](https://github.com/Harshal5167/Dapple-backend) which is built with Go. See the backend repository for API documentation and setup instructions.
-
-## License
-
-This project is licensed under the [MIT License](./LICENSE). See the LICENSE file for details.
+This frontend connects to the [Dapple Backend](https://github.com/parthrevanwar/dapple-frontend.git) which is built with Go. See the backend repository for API documentation and setup instructions.
 
 ## Contact
 
-Project Maintainer - Harshal Gainer ([Harshal5167](https://github.com/Harshal5167))
+Project Maintainer - Parth Revanwar ([](https://github.com/parthrevanwar)) 
