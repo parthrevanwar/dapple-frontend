@@ -8,11 +8,13 @@ class SuggestionsTile extends StatelessWidget {
       {super.key,
       required this.imageUrl,
       required this.title,
-      required this.description});
+      required this.description,
+      required this.isSelected});
 
   final String imageUrl;
   final String title;
   final String description;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class SuggestionsTile extends StatelessWidget {
         width: 150,
         height: 180,
         decoration: BoxDecoration(
-          color: AppPalette.white,
+          color: isSelected ? Color(0xFFD4D0F6) : AppPalette.white,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(

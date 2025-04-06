@@ -20,7 +20,7 @@ class AppointmentCard extends StatelessWidget {
             .pushNamed(AppRouteConsts.appointmentDetails, extra: appointment);
       },
       child: Container(
-        width: 250,
+        width: 260,
         decoration: BoxDecoration(
           color: AppPalette.primaryColor,
           borderRadius: BorderRadius.circular(20),

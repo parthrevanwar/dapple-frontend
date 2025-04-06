@@ -85,10 +85,10 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     // GoRouter.of(context)
                     //     .pushNamed(AppRouteConsts.underConstruction);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const UnderConstruction()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => const UnderConstruction()),
+                    // );
                   },
                   child: LearningCard()),
             ),

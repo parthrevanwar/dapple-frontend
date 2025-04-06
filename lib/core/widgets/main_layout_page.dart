@@ -20,13 +20,14 @@ class MainLayoutPage extends StatelessWidget {
     return PersistentTabView(
       context,
       controller: _controller,
-      screens: _buildScreens(isSectionDone?? false),
+      screens: _buildScreens(isSectionDone ?? false),
       items: _navBarsItems(),
       navBarHeight: 70,
       padding: const EdgeInsets.only(top: 8),
       backgroundColor: AppPalette.white,
       animationSettings: const NavBarAnimationSettings(
-        screenTransitionAnimation: ScreenTransitionAnimationSettings( // Screen transition animation on change of selected tab.
+        screenTransitionAnimation: ScreenTransitionAnimationSettings(
+          // Screen transition animation on change of selected tab.
           animateTabTransition: true,
           duration: Duration(milliseconds: 200),
           screenTransitionAnimationType: ScreenTransitionAnimationType.slide,
@@ -38,13 +39,18 @@ class MainLayoutPage extends StatelessWidget {
 }
 
 List<Widget> _buildScreens(bool isSectionDone) {
-  return [HomePage(), ExpertTalkHomeScreen(),AiTalkHomeScreen(),ProfileScreen()];
+  return [
+    HomePage(isSectionDone: isSectionDone,),
+    ExpertTalkHomeScreen(),
+    AiTalkHomeScreen(),
+    ProfileScreen()
+  ];
 }
 
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
-      icon:SvgPicture.asset(
+      icon: SvgPicture.asset(
         'assets/navbar_icons/home_active.svg', // You can adjust the size
       ),
       inactiveIcon: SvgPicture.asset(
@@ -52,15 +58,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       ),
     ),
     PersistentBottomNavBarItem(
-      icon:SvgPicture.asset(
-        'assets/navbar_icons/message_active.svg', // You can adjust the size
-      ),
-      inactiveIcon: SvgPicture.asset(
-        'assets/navbar_icons/message.svg', // You can adjust the size
-      ),
-    ),
-    PersistentBottomNavBarItem(
-      icon:SvgPicture.asset(
+      icon: SvgPicture.asset(
         'assets/navbar_icons/profile_active.svg', // You can adjust the size
       ),
       inactiveIcon: SvgPicture.asset(
@@ -68,11 +66,19 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       ),
     ),
     PersistentBottomNavBarItem(
-      icon:SvgPicture.asset(
-        'assets/navbar_icons/goal_active.svg', // You can adjust the size
+      icon: SvgPicture.asset(
+        'assets/navbar_icons/message_active.svg', // You can adjust the size
       ),
       inactiveIcon: SvgPicture.asset(
-        'assets/navbar_icons/goal.svg', // You can adjust the size
+        'assets/navbar_icons/message.svg', // You can adjust the size
+      ),
+    ),
+    PersistentBottomNavBarItem(
+      icon: SvgPicture.asset(
+        'assets/navbar_icons/goal_active.svg',height: 32, // You can adjust the size
+      ),
+      inactiveIcon: SvgPicture.asset(
+        'assets/navbar_icons/goal.svg',height: 32,  // You can adjust the size
       ),
     ),
   ];

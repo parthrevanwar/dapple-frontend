@@ -1,5 +1,5 @@
 name: dapple
-description: "Google solutions challange"
+description: "A Flutter application for learning and practicing English with a focus on listening and speaking skills. It includes features such as speech recognition, audio playback, and interactive exercises to enhance language acquisition."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -68,7 +68,8 @@ dependencies:
   weekly_date_picker: ^1.4.2
   intl: ^0.20.2
   flutter_image_compress: ^2.4.0
-  sim_data: ^0.0.2
+  flutter_launcher_icons: ^0.14.3
+
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

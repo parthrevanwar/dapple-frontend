@@ -35,7 +35,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     print((state as QuestionsLoaded).currentIndex);
     if ((state as QuestionsLoaded).currentIndex ==
         (state as QuestionsLoaded).questions.length) {
-      GoRouter.of(context).pushReplacementNamed(AppRouteConsts.endPage);
+      GoRouter.of(context).pushReplacementNamed(AppRouteConsts.endPage,);
       return;
     }
     final question = (state as QuestionsLoaded)

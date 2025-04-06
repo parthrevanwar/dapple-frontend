@@ -81,16 +81,18 @@ class _ExpertTalkHomeScreenState extends State<ExpertTalkHomeScreen> {
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: SizedBox(
                 height: 120,
-                child: Expanded(
-                  child: BlocBuilder<AppointmentsCubit, AppointmentsState>(
-                    builder: (context, state) {
-                      return ListView(
-                        scrollDirection: Axis.horizontal,
+                child: BlocBuilder<AppointmentsCubit, AppointmentsState>(
+                  builder: (context, state) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
                         children: [
+                          const SizedBox(width: 20),
                           if (state is AppointmentsLoading)
-                            for (var i = 0; i < 3; i++)
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
+                            ...List.generate(
+                              3,
+                                  (i) => Padding(
+                                padding: const EdgeInsets.only(right: 10),
                                 child: Shimmer.fromColors(
                                   baseColor: Colors.grey[300]!,
                                   highlightColor: Colors.grey[100]!,
@@ -103,34 +105,31 @@ class _ExpertTalkHomeScreenState extends State<ExpertTalkHomeScreen> {
                                     ),
                                   ),
                                 ),
-                              )
+                              ),
+                            )
                           else if (state is AppointmentsLoaded)
                             if (state.appointments.isEmpty)
                               NoAppointments()
                             else
-                              Row(
-                                children: [
-                                  for (var appointment in state.appointments)
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 20),
-                                      child: AppointmentCard(
-                                          appointment: appointment
-                                      ),
-                                    ),
-                                ],
+                              ...state.appointments.map(
+                                    (appointment) => Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: AppointmentCard(
+                                    appointment: appointment,
+                                  ),
+                                ),
                               )
                           else if (state is AppointmentsError)
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Center(
-                                child: Text("Error loading appointments"),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20.0),
+                                child: Center(
+                                  child: Text("Error loading appointments"),
+                                ),
                               ),
-                            )
                         ],
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

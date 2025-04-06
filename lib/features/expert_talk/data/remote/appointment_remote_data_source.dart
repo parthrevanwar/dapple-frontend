@@ -77,10 +77,12 @@ class AppointmentRemoteDataSourceImpl implements AppointmentRemoteDataSource {
         },
         body: jsonEncode({'timeSlotId': timeSlotId}), // Send timeSlotId in the request body
       );
+      debugPrint("Response Code - ${response.statusCode}");
+
+
 
       var json = jsonDecode(response.body);
       debugPrint("Book Appointment Response - ${json.toString()}");
-      debugPrint("Response Code - ${response.statusCode}");
       if (response.statusCode == 200 || response.statusCode == 201) { // 201 for created
          // Assuming the response wraps the meeting data in a "data" field
         if (json == null) {

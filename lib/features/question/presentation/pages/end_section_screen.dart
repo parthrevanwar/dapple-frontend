@@ -10,10 +10,12 @@ import '../../../../core/widgets/buttons/primary_button.dart';
 class EndSectionScreen extends StatelessWidget {
   const EndSectionScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+    int xp = 120;
+    int timeTaken = 3000;
     final deviceHeight = MediaQuery.of(context).size.height;
-    final timeTaken = Results.time;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -60,7 +62,7 @@ class EndSectionScreen extends StatelessWidget {
                 children: [
                   Expanded(
                       child: DataContainer(
-                          title: "XP GAINED", subtitle: "${Results.xp}")),
+                          title: "XP GAINED", subtitle: "$xp")),
                   SizedBox(
                     width: 10,
                   ),

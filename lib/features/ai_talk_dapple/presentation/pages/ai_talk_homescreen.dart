@@ -1,8 +1,5 @@
 import 'dart:convert';
-
 import 'package:dapple/core/widgets/buttons/custom_button.dart';
-import 'package:dapple/core/widgets/text/custom_textfield.dart';
-import 'package:dapple/features/ai_talk_dapple/presentation/widgets/role_selector.dart';
 import 'package:dapple/features/ai_talk_dapple/presentation/widgets/suggestions_tile.dart';
 import 'package:encrypt_shared_preferences/provider.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +23,7 @@ class _AiTalkHomeScreenState extends State<AiTalkHomeScreen> {
   String selectedRole = "";
   TextEditingController mobileNumberController = TextEditingController();
   final String apiBaseUrl = dotenv.env['AI_TALK_BACKEND_URL'] ?? "";
+  int selectedRoleIndex = -1;
 
   Future<void> makeCall(String phoneNumber) async {
     final String url = '$apiBaseUrl/api/call';
@@ -58,9 +56,14 @@ class _AiTalkHomeScreenState extends State<AiTalkHomeScreen> {
     final responseData = jsonDecode(response.body);
 
     if (response.statusCode == 200 && responseData['success']) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(responseData['message'])),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(content: Text(responseData['message'])),
+      // );
+      setState(() {
+        selectedRole = role;
+        selectedRoleIndex = suggestionData.indexWhere(
+            (element) => element['title'].toString().toLowerCase() == role);
+      });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to set role. Please try again.')),
@@ -75,8 +78,8 @@ class _AiTalkHomeScreenState extends State<AiTalkHomeScreen> {
       backgroundColor: AppPalette.transparent,
       builder: (context) {
         return DraggableScrollableSheet(
-          initialChildSize: 0.6,
-          minChildSize: 0.2,
+          initialChildSize: 0.7,
+          minChildSize: 0.3,
           maxChildSize: 0.9,
           expand: false,
           builder: (context, scrollController) {
@@ -276,14 +279,12 @@ class _AiTalkHomeScreenState extends State<AiTalkHomeScreen> {
                       onTap: () {
                         selectRole(
                             context, suggestionData[i]['title']!.toLowerCase());
-                        setState(() {
-                          selectedRole = suggestionData[i]["title"];
-                        });
                       },
                       child: SuggestionsTile(
                         imageUrl: suggestionData[i]["imageUrl"],
                         title: suggestionData[i]["title"],
                         description: suggestionData[i]["description"],
+                        isSelected: i == selectedRoleIndex,
                       ),
                     ),
                   SizedBox(
